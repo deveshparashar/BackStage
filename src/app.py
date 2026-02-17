@@ -11,7 +11,8 @@ app = Flask(__name__)
 @app.route('/api/v1/details')
 def details():
     return jsonify({"time": datetime.datetime.now().strftime("%I:%M:%S %p on %B %d, %Y"),
-                    "hostname": socket.gethostname()}), 200
+                    "hostname": socket.gethostname(),
+                    "message": "Welcome to the Flask application"}), 200
 
 @app.route('/api/v1/healtz')
 def healtz():
