@@ -17,9 +17,16 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Short commit id
+        shell: bash
+        run: |
+          echo "COMMIT_ID=${GITHUB_SHA::6}" >> "$GITHUB_ENV"
+
       -
         name: Build and push
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: deveshkkr/python-app:${{ github.sha }}
+          tags: deveshkkr/python-app:${{ env.COMMIT_ID }}
+    outputs:
+      commit_id: ${{ env.COMMIT_ID }}
