@@ -42,7 +42,8 @@ jobs:
           # Download the ArgoCD CLI
           curl -ksSL -o argocd https://argocd-server.argocd/download/argocd-linux-amd64
           chmod +x argocd
-          mv ./argocd /usr/local/bin/argocd
+          sudo mv ./argocd /usr/local/bin/argocd
+          
           argocd login argocd-server.argocd  \
            --insecure \
            --grpc-web \
