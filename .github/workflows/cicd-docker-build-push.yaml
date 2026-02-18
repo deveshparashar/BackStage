@@ -40,9 +40,8 @@ jobs:
       - name: Modify values file
         shell: bash
         run: |
-          echo ${{needs.ci.outputs.commit_id}}
-          pip install yq
-          yq -Yi '.image.tag = "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
+          sed -i 's/tag: ".*"/tag: "${{needs.ci.outputs.commit_id}}"/' helm-chart/python-app/values.yaml
+          cat helm-chart/python-app/values.yaml | grep -A 2 "image:"
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
