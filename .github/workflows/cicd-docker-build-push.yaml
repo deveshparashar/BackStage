@@ -40,10 +40,10 @@ jobs:
         shell: bash
         run: |
           # Download the ArgoCD CLI
-          curl -ksSL -o argocd https://argocd-server.agrocd/download/argocd-linux-amd64
+          curl -ksSL -o argocd https://argocd-server.argocd/download/argocd-linux-amd64
           chmod +x argocd
           mv ./argocd /usr/local/bin/argocd
-          argocd login argocd-server.agrocd  \
+          argocd login argocd-server.argocd  \
            --insecure \
            --grpc-web \
            --username  ${{ vars.ARGOCD_USERNAME }} \
